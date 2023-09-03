@@ -3,24 +3,43 @@ package repository
 
 import (
 	"database/sql"
-
-	_ "github.com/lib/pq"
+	"time"
 )
 
-type Repository struct {
-	Db *sql.DB
+type UserRepository struct {
+	db *sql.DB
 }
 
-type NewRepositoryOptions struct {
+type NewUserRepositoryOptions struct {
 	Dsn string
 }
 
-func NewRepository(opts NewRepositoryOptions) *Repository {
+func NewUserRepository(opts NewUserRepositoryOptions) *UserRepository {
 	db, err := sql.Open("postgres", opts.Dsn)
 	if err != nil {
 		panic(err)
 	}
-	return &Repository{
-		Db: db,
+	return &UserRepository{
+		db: db,
+	}
+}
+
+type JWTRepository struct {
+	expiryTime time.Duration
+	privateKey string
+	publicKey  string
+}
+
+type NewJWTRepositoryOptions struct {
+	ExpiryTime time.Duration
+	PrivateKey string
+	PublicKey  string
+}
+
+func NewJWTRepository(opts NewJWTRepositoryOptions) *JWTRepository {
+	return &JWTRepository{
+		expiryTime: opts.ExpiryTime,
+		privateKey: opts.PrivateKey,
+		publicKey:  opts.PublicKey,
 	}
 }

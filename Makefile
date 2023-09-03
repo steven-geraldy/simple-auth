@@ -18,6 +18,18 @@ init: generate
 test:
 	go test -short -coverprofile coverage.out -v ./...
 
+run:
+	sudo docker-compose up --build
+
+stop:
+	sudo docker-compose down
+
+remove:
+	sudo docker-compose down --volumes
+
+connectdb:
+	psql -h localhost -p 5432 -d database -U postgres
+
 generate: generated generate_mocks
 
 generated: api.yml

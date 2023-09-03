@@ -5,6 +5,46 @@ services:
       - "8080:1323"
     environment:
       DATABASE_URL: postgres://postgres:postgres@db:5432/database?sslmode=disable
+      JWT_PRIVATE_KEY: |
+        -----BEGIN PRIVATE KEY-----
+        MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCw1cqOuemz1ueF
+        hy+sz9n4hG2/kSHJISCOiH/TtIh5/axoBb8WcPVX7PXk5kXPfpEVB2NhtgoZoFxp
+        aPYJJcZq0ss5an51G5EMRp/1shL9R2fRqPO/emqapOi1xqfTG95fnP537/4fEp3a
+        wcCr1hUq8oI+r9KeOl3cWnThJLYp8RHhNR3gDl3O+LLw0qaxOjPGK70UAj1zy0hO
+        Z9fncQ9HcvGFRHRzBfj4qIx8s372hgvg5o8Jf68swQqCp/xFQt9vuC3kJNfpCXTF
+        V93V7zu6zIrcwrB0pbFD+PEWvDjS8mV7NycNGJ5oGBh/zlnbd6sI60XMxyqALMhk
+        hJVZ93IjAgMBAAECggEAMElYo8uJUMW8d543+vjQvMcwjrBLKPgmQzVrrjvsTl9h
+        /g+fo7mZjPZUGLp2UpftdvALB6nlLSU4RsJV+J57hTzlKFr3h/PMki0Qzc7f15Bx
+        fXMkh+MeC/c+4jAKMJ+6A6LDa625VvPG7e6dNW7iXdVVkleBbBpk+eArbTUQlvfb
+        gGNxYtOQa54H51IuaLiCkcr2ejFjpLvCU6g5KWNu4d9xzvSc9UlsBfAFjAebg2c5
+        X7MHP2hHBIWnq0yEut+/MyMY5jC9v8rvT7gG1ZKkF/iRXdnPVfqND+ijSOe0EJCx
+        T4N/b/HBS0ErOm3cN26x3o6DdDTv38UxPkAMvqUqqQKBgQC/aqcU11nYh0kDZm6a
+        eZftXlW3k/d3/BLNK0WsCFXZ2banJr1+0srDzfNDSoD2+g7rdcBQcf7+9+zrcVfU
+        254ILc2QLsfX7vVM78bvKcC2zEn4meHjyv586l7pso7bFcajiuvw7XRu4JVDbzjK
+        kQ3BBriUK9tEjMXiMvq5SYsGuQKBgQDsf66wt3AH1aGLbdYWCDo1COCNryMOkNs8
+        HAI8yTByusHwQS5YwXbSClsril90z1CDQw2Y5uOyOBhKV3wkatE4zopKfZXDm67J
+        dc1DmCtDLtwpEY7kV0j19Uh4xGMyhNVFCU8ujL6yc3hL9Fn7vBlXrSXP0umuBXfz
+        bTzEwhFRuwKBgFpcpMdn6hgXtVYPkwMFh70cnWZuSZKwwsdsOBXAUZbn+hvqY+Zs
+        6B+LJ92KXFs7LLPnAIR5bCE9NPDorsfjbTT7OmFoVBsRyWcqgkUA9uLUic78BfEd
+        MQoTMf8stdei7gTiXgN8dUyqZIxTAwJNe6q124jHM1mnAvuHiWjS2PixAoGAQg5T
+        u7Ywy29nBKu0DUlVALUvC0PstcfOBFcKZPII3zK8sp9yE4ZN6tLLrjii+txg75jN
+        9nQfCwtR9YnD+eP/9i7yP2Yea5lTU5/cqlGZW9V91ta5o5uhnFlbWaf40QZ7DyJP
+        hH/5T5yi8AwbCg36whtxoT+W121dmJddTtOpxLsCgYAfj4kJ1IMLo2/UYbZMRQws
+        iQGxjWrb5HhB29TjwJvkIloyPNZQDMxwPB23GKYTYOzBP0mEbjECszPDtv3Y1+pA
+        ctVGXTgMlKumbGibrsN676KKHep7IVHTDFcTH68FhrLaWeCmrq7wucemLegQmSSM
+        Jzig3Nu1ea2jo0e7vcC00A==
+        -----END PRIVATE KEY-----
+      JWT_PUBLIC_KEY: |
+        -----BEGIN PUBLIC KEY-----
+        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsNXKjrnps9bnhYcvrM/Z
+        +IRtv5EhySEgjoh/07SIef2saAW/FnD1V+z15OZFz36RFQdjYbYKGaBcaWj2CSXG
+        atLLOWp+dRuRDEaf9bIS/Udn0ajzv3pqmqTotcan0xveX5z+d+/+HxKd2sHAq9YV
+        KvKCPq/Snjpd3Fp04SS2KfER4TUd4A5dzviy8NKmsTozxiu9FAI9c8tITmfX53EP
+        R3LxhUR0cwX4+KiMfLN+9oYL4OaPCX+vLMEKgqf8RULfb7gt5CTX6Ql0xVfd1e87
+        usyK3MKwdKWxQ/jxFrw40vJlezcnDRieaBgYf85Z23erCOtFzMcqgCzIZISVWfdy
+        IwIDAQAB
+        -----END PUBLIC KEY-----
+      TOKEN_EXPIRY: 15
     depends_on:
       db:
         condition: service_healthy
